@@ -86,7 +86,10 @@ pygame.init()
 screen = pygame.display.set_mode((500, 500))
 title = pygame.display.set_caption("Gravity")
 
-rect = Rect(250, 0, 10, 10)
+rect = Rect(250, 0, 20, 20)
+
+floor = Rect(0, 480, 500, 20)
+
 v_up = [0, -10]
 v_down = [0, 10]
 v_right = [10, 0]
@@ -113,8 +116,8 @@ while running:
 
     screen.fill(BLACK)
     pygame.draw.rect(screen, WHITE, rect)
+    pygame.draw.rect(screen, WHITE, floor)
     pygame.display.flip()
-
 
 pygame.quit()
 
