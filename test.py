@@ -1,9 +1,12 @@
-from PIL import Image, ImageDraw
-import cv2
-import os 
+import pygame
+from pygame.locals import * 
+import math 
+#from PIL import Image, ImageDraw
+#import cv2
+#import os 
 
-img = Image.new("RGB", (500,500), (0, 0, 0))
-draw = ImageDraw.Draw(img)
+#img = Image.new("RGB", (500,500), (0, 0, 0))
+#draw = ImageDraw.Draw(img)
 
 """
 for size in [1,25]:
@@ -33,7 +36,7 @@ img.save("test.png")
 
 # total t = 9.79secs
 # total distance to be covered = 480m 
-
+"""
 images = []
 
 a = 10 
@@ -51,7 +54,7 @@ for i in range(10):
     print(y)
     img.save(f"images/{i+1}.jpg")
 #    images.append(f"{i+1}.jpg")
-
+"""
 """
 image_folder = "images/"
 video_name = "test.avi"
@@ -72,6 +75,62 @@ video.release()
 
 
 """
+
+# colors 
+BLACK = (0, 0, 0)
+GRAY = (127, 127, 127)
+WHITE = (255, 255, 255)
+
+pygame.init()
+# setting screen 
+screen = pygame.display.set_mode((500, 500))
+title = pygame.display.set_caption("Gravity")
+
+rect = Rect(250, 0, 10, 10)
+v_up = [0, -10]
+v_down = [0, 10]
+v_right = [10, 0]
+v_left = [-10, 0]
+# game loop
+#background = GRAY
+#count = 0
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+                
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                rect.move_ip(v_up)
+            elif event.key == pygame.K_a:
+                rect.move_ip(v_left)
+            elif event.key == pygame.K_s: 
+                rect.move_ip(v_down)
+            elif event.key == pygame.K_d: 
+                rect.move_ip(v_right)
+
+
+    screen.fill(BLACK)
+    pygame.draw.rect(screen, WHITE, rect)
+    pygame.display.flip()
+
+
+pygame.quit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
